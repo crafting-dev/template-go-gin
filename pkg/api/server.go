@@ -11,7 +11,7 @@ type Context struct {
 // Initialize server.
 func Init(ctx Context) {
 	// Set db credentials
-	SetMysqlConf()
+	SetupMySQLConfig()
 
 	// Set gin mode
 	gin.SetMode(ctx.Mode)

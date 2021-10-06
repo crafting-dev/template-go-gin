@@ -1,0 +1,8 @@
+hooks:
+  build:
+    cmd: ./build.sh
+    
+daemons:
+  server:
+    run:
+       cmd: ./build/server

@@ -33,7 +33,9 @@ spec:
         protocol: HTTP/TCP
   - managed_service:
       properties:
-        root-password: batman
+        username: batman
+        password: brucewayne
+        database: app
       service_type: mysql
       version: "8"
     name: mysql

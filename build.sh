@@ -1,3 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-go build -o build/api main.go
+mkdir -p build
+go build -o build/server main.go

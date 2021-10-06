@@ -29,16 +29,16 @@ type mysqlConfig struct {
 
 var mysqlConf mysqlConfig
 
-// SetMysqlConf updates mysqlConf using environment variables.
-func SetMysqlConf() {
+// SetupMySQLConfig updates mysqlConf using environment variables.
+func SetupMySQLConfig() {
 	// Set user
-	mysqlConf.User = "root"
+	mysqlConf.User = "batman"
 
 	// Set password
-	mysqlConf.Pass = "batman"
+	mysqlConf.Pass = "brucewayne"
 
 	// Set database
-	mysqlConf.DB = "mysql"
+	mysqlConf.DB = "app"
 
 	// Set host
 	if mysqlConf.Host = os.Getenv("MYSQL_SERVICE_HOST"); mysqlConf.Host == "" {
