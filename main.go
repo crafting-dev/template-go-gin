@@ -6,7 +6,7 @@ func main() {
 	var ctx api.Context
 
 	ctx.Mode = "release"
-	ctx.Port = "8080"
+	ctx.Port = "3000"
 
 	api.Init(ctx)
 }

@@ -32,13 +32,13 @@ var mysqlConf mysqlConfig
 // SetupMySQLConfig updates mysqlConf using environment variables.
 func SetupMySQLConfig() {
 	// Set user
-	mysqlConf.User = "batman"
+	mysqlConf.User = "brucewayne"
 
 	// Set password
-	mysqlConf.Pass = "brucewayne"
+	mysqlConf.Pass = "batman"
 
 	// Set database
-	mysqlConf.DB = "app"
+	mysqlConf.DB = "superhero"
 
 	// Set host
 	if mysqlConf.Host = os.Getenv("MYSQL_SERVICE_HOST"); mysqlConf.Host == "" {
