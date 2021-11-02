@@ -27,10 +27,8 @@ var routes = Routes{
 This path accepts a query string, and responds with the query string and current time. For example:
 ```bash
 $ curl --request GET 'localhost:3000/v1/ping?ping=hello'
-{"ping":"hello","current_time":"XXXX-XX-XX XX:XX:XX.XXXXXXXXX +0000 UTC"}
+{"ping":"hello","received_at":"XXXX-XX-XX XX:XX:XX.XXXXXXXXX +0000 UTC"}
 ```
-
-
 
 ## App configuration
 
