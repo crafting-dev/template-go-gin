@@ -1,8 +1,8 @@
 hooks:
   build:
-    cmd: ./build.sh
+    cmd: ./sandbox.sh
     
 daemons:
   server:
     run:
-       cmd: ./build/server
+      cmd: ./build/server

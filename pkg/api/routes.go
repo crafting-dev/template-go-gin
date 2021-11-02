@@ -1,8 +1,8 @@
 package api
 
 import (
-	"net/http"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 // A routing model.
@@ -16,5 +16,5 @@ type Route struct {
 type Routes []Route
 
 var routes = Routes{
-	Route{http.MethodGet, "/", TemplateHome},
+	Route{http.MethodGet, "/ping", PingPong},
 }
