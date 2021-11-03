@@ -24,14 +24,14 @@ func Render(c *gin.Context, indent bool, obj interface{}) {
 // ping param and current timestamp.
 func PingPong(c *gin.Context) {
 	type Response struct {
-		Ping        string `json:"ping"`
-		CurrentTime string `json:"current_time"`
+		Ping       string `json:"ping"`
+		ReceivedAt string `json:"received_at"`
 	}
 
 	var response Response
 
 	response.Ping = c.DefaultQuery("ping", "To ping, or not to ping; that is the question.")
-	response.CurrentTime = time.Now().UTC().String()
+	response.ReceivedAt = time.Now().UTC().String()
 
 	Render(c, false, response)
 }
