@@ -20,16 +20,16 @@ func Init(ctx Context) {
 	// logger and recovery (crash-free) middleware
 	router := gin.Default()
 
-	// Handle versioned api routes
-	v1 := router.Group("/v1")
+	// Handle api routes
+	base := router.Group("/")
 	for _, route := range routes {
-		v1.Handle(route.Method, route.Endpoint, route.Handler)
+		base.Handle(route.Method, route.Endpoint, route.Handler)
 	}
 
 	// If no routers match request url,
 	// return 404 (Not Found)
 	router.NoRoute(NotFound)
 
-	// Listen and serve
+	// Listen and serve on 0.0.0.0:PORT
 	router.Run(":" + ctx.Port)
 }
