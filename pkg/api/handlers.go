@@ -17,21 +17,20 @@ func Render(c *gin.Context, indent bool, obj interface{}) {
 }
 
 // Handles GET requests for /ping path.
-// Accepts a 'ping' query string parameter.
-// If no query string param is provided,
-// it responds with a default string.
-// Otherwise, it responds with the query
-// ping param and current timestamp.
-func PingPong(c *gin.Context) {
-	type Response struct {
+// Accepts a 'ping' query string param.
+// Responds with query string and 
+// current time (or default string and
+// current time).
+func Ping(c *gin.Context) {
+	type Pong struct {
 		Ping       string `json:"ping"`
 		ReceivedAt string `json:"received_at"`
 	}
 
-	var response Response
+	var pong Pong
 
-	response.Ping = c.DefaultQuery("ping", "To ping, or not to ping; that is the question.")
-	response.ReceivedAt = time.Now().UTC().String()
+	pong.Ping = c.DefaultQuery("ping", "To ping, or not to ping; that is the question.")
+	pong.ReceivedAt = time.Now().UTC().String()
 
-	Render(c, false, response)
+	Render(c, false, pong)
 }

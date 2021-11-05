@@ -15,18 +15,16 @@ func main() {
 }
 ```
 
-All routes are grouped and versioned by number (for example: `baseUrl/v1` where `v1` is the api version). See Gin's [docs](https://github.com/gin-gonic/gin#grouping-routes) on grouping routes.
-
 This template exposes a single `/ping` route:
 ```go
 var routes = Routes{
-	Route{http.MethodGet, "/ping", PingPong},
+	Route{http.MethodGet, "/ping", Ping},
 }
 ```
 
 This path accepts a query string, and responds with the query string and current time. For example:
 ```bash
-$ curl --request GET 'localhost:3000/v1/ping?ping=hello'
+$ curl --request GET 'localhost:3000/ping?ping=hello'
 {"ping":"hello","received_at":"XXXX-XX-XX XX:XX:XX.XXXXXXXXX +0000 UTC"}
 ```
 

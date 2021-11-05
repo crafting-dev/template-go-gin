@@ -16,5 +16,5 @@ type Route struct {
 type Routes []Route
 
 var routes = Routes{
-	Route{http.MethodGet, "/ping", PingPong},
+	Route{http.MethodGet, "/ping", Ping},
 }
