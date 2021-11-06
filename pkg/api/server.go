@@ -24,10 +24,10 @@ func Init(ctx Context) {
 	router := gin.Default()
 
 	// same as
-  // config := cors.DefaultConfig()
-  // config.AllowAllOrigins = true
-  // router.Use(cors.New(config))
-  router.Use(cors.Default())
+	// config := cors.DefaultConfig()
+	// config.AllowAllOrigins = true
+	// router.Use(cors.New(config))
+	router.Use(cors.Default())
 
 	// Handle api routes
 	base := router.Group("/")
