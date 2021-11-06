@@ -1,6 +1,9 @@
 package api
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
+)
 
 // Router mode and server port info.
 type Context struct {
@@ -19,6 +22,12 @@ func Init(ctx Context) {
 	// Gin router with default middleware:
 	// logger and recovery (crash-free) middleware
 	router := gin.Default()
+
+	// same as
+	// config := cors.DefaultConfig()
+	// config.AllowAllOrigins = true
+	// router.Use(cors.New(config))
+	router.Use(cors.Default())
 
 	// Handle api routes
 	base := router.Group("/")
