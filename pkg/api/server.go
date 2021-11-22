@@ -3,6 +3,7 @@ package api
 import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/location"
 )
 
 // Router mode and server port info.
@@ -29,6 +30,15 @@ func Init(ctx Context) {
 	// router.Use(cors.New(config))
 	router.Use(cors.Default())
 
+	// configure to automatically detect scheme and host
+  // - use http when default scheme cannot be determined
+  // - use localhost:PORT when default host cannot be determined
+  router.Use(location.New(location.Config{
+		Scheme: "http",
+		Host: "localhost:" + ctx.Port,
+		Base: "/",
+	}))
+
 	// Handle api routes
 	base := router.Group("/")
 	for _, route := range routes {
@@ -39,6 +49,6 @@ func Init(ctx Context) {
 	// return 404 (Not Found)
 	router.NoRoute(NotFound)
 
-	// Listen and serve on 0.0.0.0:PORT
-	router.Run(":" + ctx.Port)
+	// Listen and serve
+	router.Run()
 }
