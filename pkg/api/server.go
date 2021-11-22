@@ -31,9 +31,9 @@ func Init(ctx Context) {
 	router.Use(cors.Default())
 
 	// configure to automatically detect scheme and host
-  // - use http when default scheme cannot be determined
-  // - use localhost:PORT when default host cannot be determined
-  router.Use(location.New(location.Config{
+	// - use http when default scheme cannot be determined
+	// - use localhost:PORT when default host cannot be determined
+	router.Use(location.New(location.Config{
 		Scheme: "http",
 		Host: "localhost:" + ctx.Port,
 		Base: "/",
