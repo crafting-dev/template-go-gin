@@ -1,6 +1,6 @@
 # Go/Gin with MySQL template for Crafting Sandbox
 
-This is a [Go](https://golang.org/)/[Gin](https://github.com/gin-gonic/gin) with MySQL template, configured for quick development setup in [Crafting Sandbox](https://crafting.readme.io/docs).
+This is a [Go](https://golang.org/)/[Gin](https://github.com/gin-gonic/gin) with MySQL template, configured for quick development setup in [Crafting Sandbox](https://docs.sandboxes.cloud/docs).
 
 ## Specifications
 
@@ -28,40 +28,41 @@ $ curl --request GET 'localhost:3000/ping?ping=hello'
 {"ping":"hello","received_at":"XXXX-XX-XX XX:XX:XX.XXXXXXXXX +0000 UTC"}
 ```
 
-## App configuration
+## App Definition
 
-The following [App configuration](https://crafting.readme.io/docs/app-spec) was used to create this template:
+The following [App Definition](https://docs.sandboxes.cloud/docs/app-definition) was used to create this template:
 
 ```yaml
 endpoints:
-- http:
-  routes:
-  - backend:
-      port: http
-      target: go-gin
-    path_prefix: /
-name: api
-services:
-- description: Go/Gin template
-name: go-gin
-workspace:
-  checkouts:
-  - path: src/template-go-gin
-    repo:
-      git: https://github.com/crafting-dev/template-go-gin.git
-  packages:
-  - name: golang
-    version: ~1.17
+- name: api
+  http:
+    routes:
+    - pathPrefix: "/"
+      backend:
+        target: go-gin
+        port: api
+    authProxy:
+      disabled: true
+workspaces:
+- name: go-gin
+  description: Template backend using Go/Gin
   ports:
-  - name: http
+  - name: api
     port: 3000
     protocol: HTTP/TCP
-- managed_service:
+  checkouts:
+  - path: backend
+    repo:
+      git: https://github.com/crafting-dev/template-go-gin
+  packages:
+  - name: golang
+    version: 1.17.2
+dependencies:
+- name: mysql
+  serviceType: mysql
+  version: '8'
   properties:
     database: superhero
     password: batman
     username: brucewayne
-  service_type: mysql
-  version: "8"
-name: mysql
 ```
